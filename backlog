@@ -1,0 +1,59 @@
+Requisitos do Sistema - Gestao de Chamados de IA
+
+Requisitos Funcionais: 
+RF01 - Cadastro e Autenticação de Usuários
+- O sistema deve permitir o cadastro de usuários com nome, e-mail e senha.
+- O sistema deve validar o e-mail do usuário antes de concluir o cadastro.
+- O sistema deve permitir que os usuários realizem login com e-mail e senha.
+- O sistema deve permitir a recuperação de senha via e-mail.
+- O sistema deve permitir que o administrador ative ou desative usuários.
+- O sistema deve permitir a atribuição de permissões aos usuários (colaborador, técnico, administrador).
+
+RF02 - Abertura e Gerenciamento de Chamados
+- O sistema deve permitir que os colaboradores abram chamados informando:
+- Descrição do problema
+- Categoria
+- Nível de urgência
+- O sistema deve gerar um número único para cada chamado.
+- O sistema deve permitir o upload de anexos (.png, .jpg, .pdf) nos chamados.
+- O sistema deve permitir que os colaboradores visualizem seus chamados abertos, em andamento e concluídos.
+- O sistema deve permitir que os técnicos visualizem os chamados atribuídos a eles.
+- O sistema deve permitir que os técnicos adicionem comentários e atualizem o status dos chamados.
+
+RF03 - Atendimento com IA e Encaminhamento Inteligente
+- O sistema deve sugerir automaticamente soluções baseadas no histórico de chamados similares.
+- O sistema deve permitir que o colaborador aceite ou rejeite a sugestão automática da IA.
+- O sistema deve encaminhar automaticamente chamados para o técnico mais adequado com base em:
+- Descrição do problema
+- Histórico de chamados
+- Competências e disponibilidade do técnico
+
+RF04 - Notificações e Comunicação
+- O sistema deve enviar notificações aos usuários sempre que houver uma atualização no chamado.
+- O sistema deve permitir que os técnicos enviem mensagens dentro do chamado para solicitar mais informações.
+
+RF05 - Relatórios e Métricas
+- O sistema deve fornecer um painel de métricas para administradores, incluindo:
+- Tempo médio de resposta dos chamados
+- Número de chamados resolvidos
+- Eficiência da IA na resolução automática
+- O sistema deve gerar relatórios sobre a taxa de sucesso das sugestões automáticas da IA.
+
+Requisitos Nao Funcionais:
+RNF01 - Segurança
+- O sistema deve utilizar autenticação segura com criptografia de senha.
+- O sistema deve implementar controle de acesso baseado em permissões (colaborador, técnico, administrador).
+
+RNF02 - Desempenho
+- O tempo de resposta do sistema deve ser inferior a 3 segundos para consultas comuns.
+- O tempo de resposta da IA ao sugerir uma solução deve ser inferior a 5 segundos.
+
+RNF03 - Disponibilidade
+- O sistema deve estar disponível 24/7, com tempo máximo de inatividade de 2 horas/mês.
+
+RNF04 - Usabilidade
+- O sistema deve possuir uma interface intuitiva e acessível para todos os usuários.
+
+RNF05 - Escalabilidade
+- O sistema deve suportar um aumento de até 10x na quantidade de chamados sem perda de desempenho.
+
