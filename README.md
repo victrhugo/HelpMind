@@ -38,7 +38,7 @@
 - **Desempenho:** Respostas rápidas (< 3s para consultas comuns, < 5s para IA).
 - **Disponibilidade:** 99,9% (máx. 2h/mês de inatividade).
 - **Usabilidade:** Interface intuitiva e acessível.
-- **Escalabilidade:** Suporte a aumento de carga sem perda de desempenho.
+- **Escalabilidade:** Suporte a aumento de carga sem perda de desempenho
 
 
 
