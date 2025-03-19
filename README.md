@@ -3,7 +3,6 @@
 ##  Funcionais
 ### Autenticação e Cadastro de Usuários
 - Cadastro de usuários com validação de e-mail.
-- Login seguro com autenticação.
 - Recuperação de senha via e-mail.
 - Gestão de permissões (colaborador, técnico, administrador).
 
@@ -19,7 +18,7 @@
 
 ### Notificações e Comunicação
 - Notificações automáticas sobre atualizações nos chamados.
-- Mensagens entre técnicos e colaboradores dentro do chamado.
+- Mensagens entre técnicos e colaboradores por e-mail.
 
 ### Relatórios e Métricas
 - Tempo médio de resposta dos chamados.
