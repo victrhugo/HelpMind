@@ -11,7 +11,7 @@
 - Upload de anexos (.png, .jpg, .pdf).
 - Acompanhamento do status dos chamados.
 - Atualização e comentários pelos técnicos.
-- 
+  
 ### Atendimento com IA e Encaminhamento Inteligente
 - Sugestão automática de soluções baseadas em chamados similares.
 - Encaminhamento inteligente para o técnico mais adequado.
