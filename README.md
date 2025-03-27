@@ -32,10 +32,9 @@
 
 ## Requisitos Não Funcionais
 - **Segurança:** Autenticação segura e controle de acesso baseado em permissões.
-- **Desempenho:** Respostas rápidas.
-- **Disponibilidade:** 99,9% (máx. 2h horas por mês de inatividade).
+- **Desempenho:** Respostas relativamente rápidas.
 - **Usabilidade:** Interface intuitiva e acessível.
-- **Escalabilidade:** Suporte a aumento de carga sem perda de desempenho
+- **Escalabilidade:** Suporte a aumento de carga sem perda de desempenho.
 
 
 
