@@ -7,23 +7,21 @@
 - Gestão de permissões (colaborador, técnico, administrador).
 
 ### Abertura e Gerenciamento de Chamados
-- Abertura de chamados com descrição, categoria e nível de urgência.
+- Abertura de chamados com descrição e nível de urgência.
 - Upload de anexos (.png, .jpg, .pdf).
 - Acompanhamento do status dos chamados.
 - Atualização e comentários pelos técnicos.
-
+- 
 ### Atendimento com IA e Encaminhamento Inteligente
 - Sugestão automática de soluções baseadas em chamados similares.
 - Encaminhamento inteligente para o técnico mais adequado.
 
 ### Notificações e Comunicação
 - Notificações automáticas sobre atualizações nos chamados.
-- Mensagens entre técnicos e colaboradores por e-mail.
-
+  
 ### Relatórios e Métricas
 - Tempo médio de resposta dos chamados.
 - Número de chamados resolvidos.
-- Eficiência da IA na resolução automática.
 - Relatórios sobre a taxa de sucesso das sugestões da IA.
 
 ## Tecnologias Utilizadas
