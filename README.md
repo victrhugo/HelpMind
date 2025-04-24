@@ -1,40 +1,76 @@
-#  Gestão de Chamados com IA - BACKLOG
+# 🎯 Sistema de Gestão de Chamados com Inteligência Artificial
 
-##  Funcionais
-### Autenticação e Cadastro de Usuários
+Plataforma para gerenciamento de chamados técnicos com integração de Inteligência Artificial, focada em automatização de atendimentos, melhoria na experiência do usuário e aumento da eficiência operacional.
+
+---
+
+## 📌 Funcionalidades
+
+### 🔐 Autenticação e Gerenciamento de Usuários
 - Cadastro de usuários com validação de e-mail.
 - Recuperação de senha via e-mail.
-- Gestão de permissões (colaborador, técnico, administrador).
+- Gestão de permissões: Colaborador, Técnico, Administrador.
 
-### Abertura e Gerenciamento de Chamados
+### 🛠️ Chamados Técnicos
 - Abertura de chamados com descrição e nível de urgência.
-- Upload de anexos (.png, .jpg, .pdf).
-- Acompanhamento do status dos chamados.
-- Atualização e comentários pelos técnicos.
-  
-### Atendimento com IA e Encaminhamento Inteligente
-- Sugestão automática de soluções baseadas em chamados similares.
-- Encaminhamento inteligente para o técnico mais adequado.
+- Upload de arquivos: `.png`, `.jpg`, `.pdf`.
+- Acompanhamento do status do chamado.
+- Atualizações e comentários por técnicos responsáveis.
 
-### Notificações e Comunicação
-- Notificações automáticas sobre atualizações nos chamados.
-  
-### Relatórios e Métricas
-- Tempo médio de resposta dos chamados.
-- Número de chamados resolvidos.
-- Relatórios sobre a taxa de sucesso das sugestões da IA.
+### 🤖 Inteligência Artificial no Atendimento
+- Sugestão automática de soluções com base em chamados anteriores.
+- Encaminhamento inteligente para o técnico mais apropriado.
 
-## Tecnologias Utilizadas
+### 📢 Notificações
+- Alertas automáticos sobre atualizações de chamados para usuários e técnicos.
+
+### 📊 Relatórios e Métricas
+- Tempo médio de resposta.
+- Total de chamados resolvidos.
+- Efetividade das sugestões da IA.
+
+---
+
+## 🧰 Tecnologias Utilizadas
+
 - **Linguagem:** C#
+- **Framework:** .NET
 - **Banco de Dados:** SQL Server
-- **Frameworks:** .NET
-- **Ferramentas:** Astah (modelagem de diagramas), BrModelo (modelagem ER)
+- **Modelagem:**
+  - Astah (Diagramas UML)
+  - BrModelo (Modelagem ER)
 
-## Requisitos Não Funcionais
-- **Segurança:** Autenticação segura e controle de acesso baseado em permissões.
-- **Desempenho:** Respostas relativamente rápidas.
-- **Usabilidade:** Interface intuitiva e acessível.
-- **Escalabilidade:** Suporte a aumento de carga sem perda de desempenho.
+---
 
+## 📋 Requisitos Não Funcionais
 
+- **Segurança:** Autenticação robusta e controle de acesso por níveis.
+- **Desempenho:** Tempo de resposta otimizado.
+- **Usabilidade:** Interface amigável e intuitiva.
+- **Escalabilidade:** Suporte a alto volume de usuários e chamados sem perda de performance.
 
+---
+
+## 🚀 Como Contribuir
+
+1. Faça um fork deste repositório.
+2. Crie uma nova branch: `git checkout -b minha-feature`.
+3. Commit suas alterações: `git commit -m 'Minha nova feature'`.
+4. Push para a branch: `git push origin minha-feature`.
+5. Abra um Pull Request.
+
+---
+
+## 📄 Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
+
+---
+
+## 👥 Contato
+
+Para dúvidas, sugestões ou colaboração, entre em contato com a equipe de desenvolvimento.
+
+---
+
+> Projeto desenvolvido com fins educacionais e empresariais, com foco em inovação tecnológica e transformação digital no atendimento ao cliente.
