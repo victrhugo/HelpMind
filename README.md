@@ -61,12 +61,6 @@ Plataforma para gerenciamento de chamados técnicos com integração de Intelig�
 
 ---
 
-## 📄 Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).
-
----
-
 ## 👥 Contato
 
 Para dúvidas, sugestões ou colaboração, entre em contato com a equipe de desenvolvimento.
