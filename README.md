@@ -67,7 +67,10 @@ Para dúvidas, sugestões ou colaboração, entre em contato com a equipe de des
 
 ---
 
-📘 [Leia a documentação completa do HelpMind aqui](helpmind_document)
-
 
 > Projeto desenvolvido com fins educacionais e empresariais, com foco em inovação tecnológica e transformação digital no atendimento ao cliente.
+
+---
+
+📘 [Leia a documentação completa do HelpMind aqui](helpmind_document.md)
+
