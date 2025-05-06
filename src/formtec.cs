@@ -1,57 +1,58 @@
-namespace GestaoIA
-{
-    public partial class FormTecnico: Form
-    {
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Windows.Forms;
 
-        private string conexaoString = "Server=DESKTOP-6H5PBKR\\SQLVICTOR;Database=GestaoIA;Integrated Security=True;TrustServerCertificate=True;";
+namespace HelpMind
+{
+    public partial class FormTecnico : Form
+    {
+        private readonly string _connectionString = "Server=DESKTOP-6H5PBKR\\SQLVICTOR;Database=GestaoIA;Integrated Security=True;TrustServerCertificate=True;";
+
         public FormTecnico()
         {
             InitializeComponent();
+            PopularStatusComboBox();
             CarregarChamados();
         }
-
 
         private void CarregarChamados()
         {
             try
             {
-                using (SqlConnection conexao = new SqlConnection(conexaoString))
+                using (SqlConnection conexao = new SqlConnection(_connectionString))
                 {
                     string query = "SELECT ID, Nome, Email, Descricao, Status FROM Chamados";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conexao))
-                    {
-                        conexao.Open();
-                        SqlDataReader reader = cmd.ExecuteReader();
-                        DataTable dt = new DataTable();
-                        dt.Load(reader);
-
-                        dataGridViewChamados.DataSource = dt; 
-                    }
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexao);
+                    DataTable dtChamados = new DataTable();
+                    adapter.Fill(dtChamados);
+                    dataGridViewChamados.DataSource = dtChamados;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao carregar chamados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExibirErro("Erro ao carregar chamados", ex);
             }
         }
 
-        private void AlterarStatus_Click(object sender, EventArgs e)
+        private void btnAlterarStatus_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(txtIdChamado.Text, out int idChamado))
             {
-                MessageBox.Show("Informe um ID de chamado válido!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ExibirAviso("Informe um ID de chamado válido!");
                 return;
             }
-          
+
             if (comboBoxStatus.SelectedItem == null)
             {
-                MessageBox.Show("Selecione um status!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ExibirAviso("Selecione um status!");
                 return;
             }
 
             string novoStatus = comboBoxStatus.SelectedItem.ToString();
-
             AtualizarStatusChamado(idChamado, novoStatus);
         }
 
@@ -59,106 +60,38 @@ namespace GestaoIA
         {
             try
             {
-                using (SqlConnection conexao = new SqlConnection(conexaoString))
+                using (SqlConnection conexao = new SqlConnection(_connectionString))
                 {
-                    string verificarQuery = "SELECT COUNT(*) FROM Chamados WHERE ID = @IDChamado";
+                    conexao.Open();
 
-                    using (SqlCommand verificarCmd = new SqlCommand(verificarQuery, conexao))
+                    string verificarQuery = "SELECT COUNT(*) FROM Chamados WHERE ID = @ID";
+                    using (SqlCommand cmdVerificar = new SqlCommand(verificarQuery, conexao))
                     {
-                        verificarCmd.Parameters.AddWithValue("@IDChamado", idChamado);
-                        conexao.Open();
-                        int existe = (int)verificarCmd.ExecuteScalar();
+                        cmdVerificar.Parameters.AddWithValue("@ID", idChamado);
+                        int existe = (int)cmdVerificar.ExecuteScalar();
 
                         if (existe == 0)
                         {
-                            MessageBox.Show("Chamado não encontrado! Verifique o ID.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            ExibirAviso("Chamado não encontrado. Verifique o ID.");
                             return;
                         }
                     }
-                   
-                    string atualizarQuery = "UPDATE Chamados SET Status = @Status WHERE ID = @IDChamado";
 
-                    using (SqlCommand atualizarCmd = new SqlCommand(atualizarQuery, conexao))
+                    string atualizarQuery = "UPDATE Chamados SET Status = @Status WHERE ID = @ID";
+                    using (SqlCommand cmdAtualizar = new SqlCommand(atualizarQuery, conexao))
                     {
-                        atualizarCmd.Parameters.AddWithValue("@Status", novoStatus);
-                        atualizarCmd.Parameters.AddWithValue("@IDChamado", idChamado);
-                        atualizarCmd.ExecuteNonQuery();
+                        cmdAtualizar.Parameters.AddWithValue("@Status", novoStatus);
+                        cmdAtualizar.Parameters.AddWithValue("@ID", idChamado);
+                        cmdAtualizar.ExecuteNonQuery();
                     }
                 }
 
-                MessageBox.Show("Status atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ExibirMensagem("Status atualizado com sucesso!");
+                CarregarChamados();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao atualizar status: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-        private void PopularComboBoxStatus()
-        {
-            comboBoxStatus.Items.Clear();
-            comboBoxStatus.Items.Add("Aberto");
-            comboBoxStatus.Items.Add("Em Andamento");
-            comboBoxStatus.Items.Add("Concluído");
-            comboBoxStatus.SelectedIndex = 0;
-        }
-
-        private void SalvarRespostaChamado(int idChamado, string resposta)
-        {
-            try
-            {
-                using (SqlConnection conexao = new SqlConnection(conexaoString))
-                {
-                    string query = "UPDATE Chamados SET Resposta = @Resposta WHERE ID = @IDChamado";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conexao))
-                    {
-                        cmd.Parameters.AddWithValue("@Resposta", resposta);
-                        cmd.Parameters.AddWithValue("@IDChamado", idChamado);
-
-                        conexao.Open();
-                        int linhasAfetadas = cmd.ExecuteNonQuery();
-
-                        if (linhasAfetadas > 0)
-                        {
-                            MessageBox.Show("Resposta salva com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Erro ao salvar a resposta. Verifique o ID do chamado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao conectar ao banco de dados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void EnviarEmailResposta(string emailDestino, string resposta)
-        {
-            try
-            {
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress("victorhforworking@gmail.com");
-                mail.To.Add(emailDestino);
-                mail.Subject = "Resposta ao seu chamado de suporte";
-                mail.Body = "Olá,\n\nA equipe de suporte respondeu ao seu chamado:\n\n" + resposta + "\n\nAtenciosamente,\nEquipe de Suporte";
-                mail.IsBodyHtml = false;
-
-                SmtpClient smtp = new SmtpClient("smtp.gmail.com");
-                smtp.Port = 587;
-                smtp.Credentials = new NetworkCredential("victorhforworking@gmail.com", "aapf njfk tehy qcmz");
-                smtp.EnableSsl = true;
-                smtp.Send(mail);
-
-                MessageBox.Show("E-mail enviado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao enviar o e-mail: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExibirErro("Erro ao atualizar status", ex);
             }
         }
 
@@ -166,62 +99,116 @@ namespace GestaoIA
         {
             if (!int.TryParse(txtIdChamado.Text, out int idChamado))
             {
-                MessageBox.Show("Selecione um chamado válido!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ExibirAviso("Selecione um chamado válido!");
                 return;
             }
 
             string resposta = txtResposta.Text.Trim();
-
             if (string.IsNullOrEmpty(resposta))
             {
-                MessageBox.Show("Digite a resposta antes de enviar!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ExibirAviso("Digite a resposta antes de enviar!");
                 return;
             }
 
-            // busca e-mail
-            string emailDestino = BuscarEmailChamado(idChamado);
-
+            string emailDestino = BuscarEmailPorIdChamado(idChamado);
             if (!string.IsNullOrEmpty(emailDestino))
             {
-                SalvarRespostaChamado(idChamado, resposta);
-                EnviarEmailResposta(emailDestino, resposta);
-                CarregarChamados(); // atualiza a lista de chamados
+                SalvarResposta(idChamado, resposta);
+                EnviarEmail(emailDestino, resposta);
+                CarregarChamados();
             }
             else
             {
-                MessageBox.Show("Erro ao buscar o e-mail do solicitante.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExibirErro("Erro ao buscar o e-mail do solicitante.");
             }
         }
 
-        private string BuscarEmailChamado(int idChamado)
+        private void SalvarResposta(int idChamado, string resposta)
         {
             try
             {
-                using (SqlConnection conexao = new SqlConnection(conexaoString))
+                using (SqlConnection conexao = new SqlConnection(_connectionString))
                 {
-                    string query = "SELECT Email FROM Chamados WHERE ID = @IDChamado";
-
+                    string query = "UPDATE Chamados SET Resposta = @Resposta WHERE ID = @ID";
                     using (SqlCommand cmd = new SqlCommand(query, conexao))
                     {
-                        cmd.Parameters.AddWithValue("@IDChamado", idChamado);
-
+                        cmd.Parameters.AddWithValue("@Resposta", resposta);
+                        cmd.Parameters.AddWithValue("@ID", idChamado);
                         conexao.Open();
-                        object result = cmd.ExecuteScalar();
 
-                        return result != null ? result.ToString() : null;
+                        int linhasAfetadas = cmd.ExecuteNonQuery();
+                        if (linhasAfetadas > 0)
+                            ExibirMensagem("Resposta salva com sucesso!");
+                        else
+                            ExibirErro("Erro ao salvar a resposta. Verifique o ID do chamado.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao buscar e-mail: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExibirErro("Erro ao salvar resposta", ex);
+            }
+        }
+
+        private string BuscarEmailPorIdChamado(int idChamado)
+        {
+            try
+            {
+                using (SqlConnection conexao = new SqlConnection(_connectionString))
+                {
+                    string query = "SELECT Email FROM Chamados WHERE ID = @ID";
+                    using (SqlCommand cmd = new SqlCommand(query, conexao))
+                    {
+                        cmd.Parameters.AddWithValue("@ID", idChamado);
+                        conexao.Open();
+                        object resultado = cmd.ExecuteScalar();
+                        return resultado?.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExibirErro("Erro ao buscar e-mail", ex);
                 return null;
             }
         }
 
+        private void EnviarEmail(string destino, string corpo)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage("victorhforworking@gmail.com", destino)
+                {
+                    Subject = "Resposta ao seu chamado de suporte",
+                    Body = $"Olá,\n\nA equipe de suporte respondeu ao seu chamado:\n\n{corpo}\n\nAtenciosamente,\nEquipe de Suporte",
+                    IsBodyHtml = false
+                };
+
+                using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    smtp.Credentials = new NetworkCredential("victorhforworking@gmail.com", "aapf njfk tehy qcmz");
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+                }
+
+                ExibirMensagem("E-mail enviado com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                ExibirErro("Erro ao enviar e-mail", ex);
+            }
+        }
+
+        private void PopularStatusComboBox()
+        {
+            comboBoxStatus.Items.Clear();
+            comboBoxStatus.Items.AddRange(new[] { "Aberto", "Em Andamento", "Concluído" });
+            comboBoxStatus.SelectedIndex = 0;
+        }
+
         private void dataGridViewChamados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // verifica se a linha clicada é válida
+            if (e.RowIndex >= 0)
             {
                 txtIdChamado.Text = dataGridViewChamados.Rows[e.RowIndex].Cells["ID"].Value.ToString();
             }
@@ -229,14 +216,14 @@ namespace GestaoIA
 
         private void btnVoltarMenu_Click(object sender, EventArgs e)
         {
-            FormLogin formLogin = Application.OpenForms.OfType<FormLogin>().FirstOrDefault(); 
-
-            if (formLogin != null)
-            {
-                formLogin.Show(); 
-            }
-
-            this.Close(); 
+            FormLogin formLogin = Application.OpenForms.OfType<FormLogin>().FirstOrDefault();
+            formLogin?.Show();
+            Close();
         }
+
+        // Utilitários
+        private void ExibirMensagem(string mensagem) => MessageBox.Show(mensagem, "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        private void ExibirAviso(string mensagem) => MessageBox.Show(mensagem, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        private void ExibirErro(string mensagem, Exception ex = null) => MessageBox.Show($"{mensagem}: {ex?.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
 }
