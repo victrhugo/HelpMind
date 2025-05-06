@@ -58,5 +58,5 @@ Plataforma inteligente para registro e gerenciamento de chamados técnicos, com 
    git clone https://github.com/victrhugo/HelpMind.git
 
 
-📘 [Leia a documentação completa do HelpMind aqui](helpmind_document.md)
+📘 [Leia a documentação completa do HelpMind aqui](helpmind.md)
 
