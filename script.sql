@@ -93,34 +93,54 @@ CREATE TABLE AnexosChamado (
 );
 GO
 
-/* 
-==========================================
- DOCUMENTAÇÃO DE NORMALIZAÇÃO DO BANCO
-==========================================
+/*
+============================================================
+  DOCUMENTAÇÃO DE NORMALIZAÇÃO DO BANCO DE DADOS HELPMIND
+  Autor: Victor Hugo
+  Data: 05/05/2025
+  Objetivo: Justificar e documentar a normalização do modelo
+============================================================
 
-Forma Normal 1 (1FN) - "Elimine grupos repetitivos":
-- Todos os atributos devem conter apenas valores atômicos (indivisíveis).
-- Ex: Nenhuma coluna pode armazenar mais de um valor (como listas ou múltiplos e-mails).
+1ª FORMA NORMAL (1FN) – Dados Atômicos e Sem Repetições:
+---------------------------------------------------------
+✔️ Todos os atributos possuem apenas valores atômicos.
+✔️ Não existem colunas com listas ou múltiplos valores.
+✔️ Exemplo: Cada chamado possui uma descrição única e cada anexo é armazenado em uma linha separada na tabela AnexosChamado.
 
-Forma Normal 2 (2FN) - "Remova dependências parciais":
-- A tabela deve estar na 1FN.
-- Todos os atributos não-chave devem depender da tabela inteira, e não apenas de parte da chave primária (no caso de chaves compostas).
+2ª FORMA NORMAL (2FN) – Remoção de Dependências Parciais:
+----------------------------------------------------------
+✔️ Todas as tabelas usam chave primária simples (ID), então não há chaves compostas.
+✔️ Todos os atributos não-chave dependem totalmente da chave primária de suas tabelas.
+✔️ Exemplo: Na tabela Chamados, os campos Descricao, Status, Resposta e Datas dependem exclusivamente do ID do chamado.
 
-Forma Normal 3 (3FN) - "Elimine dependências transitivas":
-- A tabela deve estar na 2FN.
-- Nenhum atributo não-chave pode depender de outro atributo não-chave.
-- Ex: campos como 'TipoUsuario' ou 'Status' foram isolados em tabelas auxiliares.
+3ª FORMA NORMAL (3FN) – Remoção de Dependências Transitivas:
+-------------------------------------------------------------
+✔️ Nenhum atributo não-chave depende de outro atributo não-chave.
+✔️ Valores que poderiam se repetir ou estar duplicados foram movidos para tabelas auxiliares.
+✔️ Exemplo: 
+    - Status dos chamados foi isolado na tabela StatusChamados.
+    - Tipo de usuário foi isolado na tabela TipoUsuarios.
+✔️ Isso evita redundância e facilita manutenção e integridade.
 
-Forma Normal de Boyce-Codd (BCNF):
-- Versão reforçada da 3FN.
-- Toda dependência funcional deve ser de uma superchave.
-- Todas as relações foram revisadas para atender a esse critério.
+FORMA NORMAL DE BOYCE-CODD (BCNF) – Reforço da 3FN:
+----------------------------------------------------
+✔️ Todas as dependências funcionais são baseadas em superchaves.
+✔️ Colunas como Usuario (login) são únicas, evitando que um atributo dependa de outro que não seja superchave.
+✔️ Exemplo: Email e Usuario estão sob restrições únicas e não formam dependências inválidas.
 
-Forma Normal 4 (4FN) - "Elimine dependências multivaloradas":
-- A tabela deve estar na BCNF.
-- Se um atributo for multivalorado (como anexos em chamados), ele deve ser colocado em uma tabela separada.
-- Ex: Tabela `AnexosChamado` foi criada para evitar múltiplos arquivos no mesmo registro de chamado.
+4ª FORMA NORMAL (4FN) – Remoção de Dependências Multivaloradas:
+----------------------------------------------------------------
+✔️ Um chamado pode ter múltiplos arquivos anexados, mas isso é representado corretamente com a tabela AnexosChamado.
+✔️ Cada anexo está ligado a um único chamado via chave estrangeira.
+✔️ Evita o uso de campos multivalorados ou repetitivos no mesmo registro.
 
-==========================================
+============================================================
+  CONCLUSÃO:
+  O banco de dados HelpMind foi modelado para atender até a
+  4ª Forma Normal (4FN), garantindo integridade, desempenho,
+  escalabilidade e facilidade de manutenção.
+============================================================
 */
+
+
 
