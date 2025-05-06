@@ -1,4 +1,0 @@
-
-
-Após o levantamento dos requisitos funcionais e não funcionais, foram feitos os diagramas UML, que deram início ao planejamento para o projeto final, que é o protótipo Figma.
-Para nos auxiliar na organização e agilidade para a aplicação do projeto, usamos essa ferramenta incrível chamada Obsidian para planejarmos o fluxo do usuário no nosso protótipo.
