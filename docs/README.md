@@ -40,7 +40,6 @@ Plataforma inteligente para registro e gerenciamento de chamados técnicos, com 
 ## 📋 Requisitos Não Funcionais
 
 - 🔒 **Segurança**: Autenticação robusta e controle de acesso por níveis
-- ⚡ **Desempenho**: Tempo de resposta otimizado
 - 🎯 **Usabilidade**: Interface amigável e intuitiva
 - 📈 **Escalabilidade**: Suporte a alto volume de usuários e chamados
 
