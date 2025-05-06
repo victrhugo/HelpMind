@@ -1,11 +1,3 @@
-using System;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Windows.Forms;
-
 namespace HelpMind
 {
     public partial class FormTecnico : Form
