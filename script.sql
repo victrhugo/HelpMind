@@ -138,7 +138,7 @@ FORMA NORMAL DE BOYCE-CODD (BCNF) – Reforço da 3FN:
   CONCLUSÃO:
   O banco de dados HelpMind foi modelado para atender até a
   4ª Forma Normal (4FN), garantindo integridade, desempenho,
-  escalabilidade e facilidade de manutenção.
+  escalabilidade e facilidade de manutenção
 ============================================================
 */
 
