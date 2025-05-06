@@ -29,7 +29,7 @@ Plataforma inteligente para registro e gerenciamento de chamados técnicos, com 
 ## 🧰 Tecnologias Utilizadas
 
 - 💻 **Linguagem**: [C#](https://learn.microsoft.com/pt-br/dotnet/csharp/)
-- 🧱 **Framework**: .NET (especifique versão, ex: .NET 6)
+- 🧱 **Framework**: .NET Framework, .NET 8
 - 🗃️ **Banco de Dados**: SQL Server
 - 🧩 **Modelagem**:
   - [Astah UML](https://astah.net/)
