@@ -19,13 +19,8 @@ Plataforma inteligente para registro e gerenciamento de chamados técnicos, com 
 
 - 🤖 **Atendimento com IA**
   - Sugestões automáticas baseadas em histórico
-  - Encaminhamento inteligente ao técnico adequado
-
-- 📢 **Notificações**
-  - Alertas automáticos sobre atualizações para usuários e técnicos
 
 - 📊 **Relatórios e Métricas**
-  - Tempo médio de resposta
   - Total de chamados resolvidos
   - Efetividade da IA nas sugestões
 
