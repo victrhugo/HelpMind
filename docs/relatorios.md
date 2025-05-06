@@ -38,18 +38,7 @@
 | Ana Fernandes    | 16                     |
 
 > 📌 Indica o **volume de atendimento por colaborador**, útil para avaliar a produtividade e carga de trabalho.
-
 ---
-
-## 4. Tempo Médio de Resolução por Técnico
-
-| Técnico         | Tempo Médio (dias) |
-|------------------|--------------------|
-| João Silva       | 1,4                |
-| Maria Oliveira   | 2,0                |
-| Carlos Santos    | 1,1                |
-| Ana Fernandes    | 1,9                |
-
 > 📌 Mede a **eficiência média de resolução**, importante para decisões de melhoria de processos.
 
 ---
