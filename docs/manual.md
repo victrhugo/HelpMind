@@ -1,47 +1,69 @@
-# 📘 Manual de Uso - Sistema HelpMind
+# Manual de Uso - Sistema HelpMind
 
-Bem-vindo ao sistema **HelpMind**! Este manual tem como objetivo orientar usuários e técnicos sobre o funcionamento da aplicação, desde o cadastro até o uso da Inteligência Artificial (IA) para auxiliar na resolução de chamados.
-
----
-
-## 📂 Índice
-
-1. [Objetivo do Sistema](#objetivo-do-sistema)
-2. [Requisitos Mínimos](#requisitos-mínimos)
-3. [Instalação e Execução](#instalação-e-execução)
-4. [Funcionalidades](#funcionalidades)
-   - Cadastro de Usuário
-   - Login
-   - Registro de Chamado
-   - Anexar Arquivo ao Chamado
-   - Obter Resposta com IA
-   - Consulta de Status
-5. [Permissões e Acessos](#permissões-e-acessos)
-6. [Considerações de Segurança](#considerações-de-segurança)
-7. [Contato e Suporte](#contato-e-suporte)
+## 1. Objetivo do Sistema
+O HelpMind é um sistema para registrar, consultar e acompanhar chamados técnicos. Ele permite que o usuário descreva seu problema, anexe arquivos e receba uma resposta automática gerada por inteligência artificial (IA).
 
 ---
 
-## 🎯 Objetivo do Sistema
+## 2. Acesso ao Sistema
 
-O HelpMind é um sistema de gestão de chamados que oferece:
-- Registro e acompanhamento de chamados técnicos
-- Armazenamento de arquivos anexos
-- Integração com OpenAI para sugestão de soluções automáticas via IA
+### Cadastro
+- Abra o sistema e clique em **“Cadastrar”**.
+- Preencha os campos com nome, e-mail e senha.
+- Clique em **“Cadastrar”** para concluir.
 
----
-
-## 💻 Requisitos Mínimos
-
-- Windows 10 ou superior
-- .NET Framework 4.8 ou superior
-- SQL Server (local ou remoto)
-- Acesso à internet (para integração com OpenAI)
+### Login
+- Na tela de login, informe seu e-mail e senha cadastrados.
+- Clique em **“Entrar”**.
 
 ---
 
-## ⚙️ Instalação e Execução
+## 3. Criar um Chamado
 
-1. Clone ou baixe o repositório:
-   ```bash
-   git clone https://github.com/victrhugo/HelpMind.git
+Após o login:
+
+1. Clique no botão **“Criar Chamado”**.
+2. Preencha os seguintes campos:
+   - Nome
+   - E-mail
+   - Descrição detalhada do problema
+3. *(Opcional)* Clique em **“Anexar Arquivo”** e selecione um documento ou imagem.
+4. Clique em **“Enviar”**.
+5. O sistema:
+   - Salva o chamado no banco de dados.
+   - Envia a descrição para a IA.
+   - Exibe a resposta automática da IA.
+   - Armazena a resposta no banco.
+
+---
+
+## 4. Consultar o Status do Chamado
+
+1. Digite o **ID do chamado** no campo indicado.
+2. Clique em **“Carregar Status”**.
+3. O status atual será exibido na caixa ao lado.
+
+---
+
+## 5. Funcionalidades Especiais
+
+- **Validação de E-mail**: o sistema verifica se o e-mail informado é válido.
+- **Senha Segura**: as senhas são protegidas com criptografia (hash).
+- **Resposta da IA**: com base na descrição do problema, a IA sugere uma possível solução.
+- **Anexos**: é possível adicionar arquivos ao chamado, como imagens ou documentos.
+
+---
+
+## 6. Observações
+
+- Certifique-se de preencher corretamente o campo de e-mail.
+- É necessário estar conectado à internet para receber resposta da IA.
+- A chave da API da OpenAI deve estar configurada corretamente no sistema.
+- Após o envio do chamado, o **ID do chamado** é mostrado – anote para futuras consultas.
+
+---
+
+## 7. Suporte Técnico
+
+Se tiver dúvidas ou problemas, entre em contato com o responsável pelo suporte técnico ou com o desenvolvedor do sistema.
+
