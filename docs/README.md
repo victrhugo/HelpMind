@@ -32,7 +32,7 @@ Plataforma inteligente para registro e gerenciamento de chamados técnicos, com 
 - 🧱 **Framework**: .NET Framework, .NET 8
 - 🗃️ **Banco de Dados**: SQL Server
 - 🧩 **Modelagem**:
-  - [Astah UML](https://astah.net/)
+  - [Astah UML](diagramaUML.asta)
   - [BrModelo](http://sis4.com/brModelo/)
 
 ---
