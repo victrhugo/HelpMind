@@ -33,7 +33,7 @@ Plataforma inteligente para registro e gerenciamento de chamados técnicos, com 
 - 🗃️ **Banco de Dados**: SQL Server
 - 🧩 **Modelagem**:
   - [Astah UML](diagramaUML.asta)
-  - [BrModelo](http://sis4.com/brModelo/)
+  - [BrModelo](conceitualBD.brM3)
 
 ---
 
