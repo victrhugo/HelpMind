@@ -33,7 +33,8 @@ Plataforma inteligente para registro e gerenciamento de chamados técnicos, com 
 - 🗃️ **Banco de Dados**: SQL Server
 - 🧩 **Modelagem**:
   - [Astah UML](diagramaUML.asta)
-  - [BrModelo](conceitualBD.brM3)
+  - [BrModelo](https://github.com/victrhugo/HelpMind/tree/main/database
+  - )
 
 ---
 
