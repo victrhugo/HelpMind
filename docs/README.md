@@ -28,7 +28,7 @@ Plataforma inteligente para registro e gerenciamento de chamados técnicos, com 
 
 ## 🧰 Tecnologias Utilizadas
 
-- 💻 **Linguagem**: [C#](https://learn.microsoft.com/pt-br/dotnet/csharp/)
+- 💻 **Linguagem**: [C#](https://github.com/victrhugo/HelpMind/tree/main/src)
 - 🧱 **Framework**: .NET Framework, .NET 8
 - 🗃️ **Banco de Dados**: SQL Server
 - 🧩 **Modelagem**:
